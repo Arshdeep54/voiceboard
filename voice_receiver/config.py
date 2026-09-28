@@ -13,7 +13,7 @@ class Config:
 
     @classmethod
     def load(cls, path=None):
-        config_path = Path(path or os.environ.get("VOICE_RECEIVER_CONFIG", "~/.config/voice-receiver/config.toml")).expanduser()
+        config_path = Path(path or os.environ.get("VOICEBOARD_CONFIG", "~/.config/voiceboard/config.toml")).expanduser()
         if not config_path.exists():
             return cls()
         with config_path.open("rb") as config_file:

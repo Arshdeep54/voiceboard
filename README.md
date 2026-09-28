@@ -1,4 +1,4 @@
-# Voice Prompt Receiver
+# Voiceboard
 
 Use an Android phone as a private voice/text input device for the currently
 focused Linux application. Speech recognition happens in the phone browser;
@@ -20,7 +20,7 @@ The quick local install links the CLI into `~/.local/bin`:
 
 ```sh
 ./install.sh
-voice-receiver
+voiceboard
 ```
 
 For a packaged install from a checkout:
@@ -28,7 +28,7 @@ For a packaged install from a checkout:
 ```sh
 python3 -m venv .venv
 .venv/bin/python -m pip install .
-.venv/bin/voice-receiver
+.venv/bin/voiceboard
 ```
 
 The package declares its only runtime dependency, `qrcode`, for terminal QR
@@ -37,10 +37,10 @@ output. Linux input prerequisites are `xdotool` and `xclip` (or `xsel`).
 ## Use
 
 ```sh
-voice-receiver
-voice-receiver --port 8788
-voice-receiver --clipboard
-voice-receiver --no-qr
+voiceboard
+voiceboard --port 8788
+voiceboard --clipboard
+voiceboard --no-qr
 ```
 
 Startup prints the Tailscale URL and a compact terminal QR code. If the port is
@@ -59,7 +59,7 @@ Android Chrome speech recognition.
 
 ## Configuration
 
-Copy `config.example.toml` to `~/.config/voice-receiver/config.toml`:
+Copy `examples/config.example.toml` to `~/.config/voiceboard/config.toml`:
 
 ```toml
 [receiver]
@@ -69,7 +69,7 @@ clipboard_only = false
 qr = true
 ```
 
-Use `--config PATH` or `VOICE_RECEIVER_CONFIG` for another config location.
+Use `--config PATH` or `VOICEBOARD_CONFIG` for another config location.
 CLI flags override config values. The pairing token is intentionally not a
 configurable or persistent secret.
 
@@ -89,7 +89,7 @@ a home-screen shortcut on Android browsers that allow it.
 
 ```sh
 python3 -m py_compile voice_receiver/server.py
-python3 -m unittest -v test_receiver.py
+python3 -m unittest discover -s tests -p "test_*.py" -v
 ```
 
 See `SECURITY.md`, `CONTRIBUTING.md`, and `LICENSE` before publishing changes.
