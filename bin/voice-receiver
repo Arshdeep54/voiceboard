@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+runtime="${VOICE_RECEIVER_VENV:-${HOME}/.local/share/voice-prompt-receiver/venv}"
+if [ -x "$runtime/bin/python" ]; then
+  exec "$runtime/bin/python" -m voice_receiver.server "$@"
+fi
+PYTHONPATH="$root${PYTHONPATH:+:$PYTHONPATH}" exec python3 -m voice_receiver.server "$@"

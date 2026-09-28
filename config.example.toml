@@ -1,0 +1,8 @@
+# Copy to ~/.config/voice-receiver/config.toml
+# The pairing token is intentionally not stored here; it changes every run.
+
+[receiver]
+host = "tailscale"
+port = 8787
+clipboard_only = false
+qr = true
