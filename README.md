@@ -1,8 +1,39 @@
-# Voiceboard
+<p align="center">
+  <img src="site/assets/favicon.svg" width="64" height="64" alt="Voiceboard waveform logo">
+</p>
 
-Use an Android phone as a private voice/text input device for the currently
-focused Linux application. Speech recognition happens in the phone browser;
-the Linux side receives text and pastes it with `Ctrl+Shift+V`.
+<h1 align="center">Voiceboard</h1>
+
+<p align="center"><strong>Think out loud. Keep your flow.</strong></p>
+
+<p align="center">Your Android phone is your voice keyboard for Linux.<br>Speak a thought. Review your words. Send them straight to your focused app.</p>
+
+<p align="center">Free &amp; open source · Private Tailscale connection · No Voiceboard account</p>
+
+![Voiceboard landing page with a phone-to-terminal interactive preview](docs/assets/landing-page.png)
+
+## Your voice. Your words. Your desktop.
+
+Keep your cursor in your coding agent, editor, or terminal. Dictate on your
+phone, edit the text if needed, and tap **Send**. Voiceboard pastes it into
+the currently focused Linux application with `Ctrl+Shift+V`.
+
+<p align="center">
+  <img src="docs/assets/phone-ui.png" width="320" alt="Voiceboard phone interface: microphone, editable draft, optional Enter, and Send">
+</p>
+
+The screenshot shows an example draft. Speech recognition happens in your
+phone's browser; Voiceboard on the laptop receives **text, not audio**. The
+browser's speech provider may process audio externally. Desktop input uses
+Linux/X11 tools; macOS and native Wayland input are not supported.
+
+## What's new in 1.1.0
+
+- A shared visual identity for the landing page and minimal phone interface.
+- Background startup, reusable pairing links, and `voiceboard down`.
+- Automatic detection of matching Tailscale Serve HTTPS links for the QR code.
+- Live browser dictation with Android partial-result duplication handling.
+- Draft protection when editing or sending, and timeouts that release stuck controls.
 
 ## Security model
 
@@ -76,6 +107,13 @@ sound. Sending waits for the last phrase, and recognition also stops on errors
 or when you leave the page. Availability and latency depend on the browser's
 speech service; this is not the same engine as keyboard dictation.
 
+Editing the draft stops dictation so late speech results cannot overwrite your
+corrections. Tap the microphone again to continue from your edited text. You can
+write a new draft while a Send is pending; success clears only an unchanged draft.
+Stopping recognition waits at most 3 seconds, and sending waits at most 15 seconds.
+If either times out, your draft stays available. A Send timeout does not prove
+delivery failed: check your laptop before retrying to avoid sending twice.
+
 ## Configuration
 
 Copy `examples/config.example.toml` to `~/.config/voiceboard/config.toml`:
@@ -133,9 +171,11 @@ website separate from the private Tailscale receiver.
 python3 -m py_compile voice_receiver/server.py
 python3 -m unittest discover -s tests -p "test_*.py" -v
 node tests/test_dictation.cjs
+node tests/test_draft_safety.cjs
 ```
 
-The JavaScript check tests core dictation behavior with simulated speech
-results; it has no browser, UI/design checks, or package dependencies.
+The JavaScript checks test core dictation, draft safety, and timeout behavior
+with simulated speech results; they have no browser, UI/design checks, or package
+dependencies. CI runs these checks alongside the Python tests and package build.
 
 See `SECURITY.md`, `CONTRIBUTING.md`, and `LICENSE` before publishing changes.
