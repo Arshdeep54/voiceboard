@@ -18,3 +18,6 @@ voiceboard = "voice_receiver.server:main"
 
 [tool.setuptools.packages.find]
 include = ["voice_receiver*"]
+
+[tool.setuptools.package-data]
+voice_receiver = ["static/*.css", "static/*.js", "static/fonts/*"]
