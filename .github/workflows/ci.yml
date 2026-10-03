@@ -9,6 +9,21 @@ permissions:
   contents: read
 
 jobs:
+  dictation:
+    name: Test core dictation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Run functional dictation checks
+        run: |
+          node tests/test_dictation.cjs
+          node tests/test_draft_safety.cjs
+
   test:
     name: Test Python ${{ matrix.python-version }}
     runs-on: ubuntu-latest

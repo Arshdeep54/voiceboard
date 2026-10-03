@@ -23,6 +23,7 @@ function result(transcript, isFinal = false) {
 vm.runInNewContext(fs.readFileSync('voice_receiver/static/receiver.js', 'utf8'), {
     document: {querySelector: selector => elements[selector.slice(1)], addEventListener() {}},
     window: {SpeechRecognition: Recognition}, navigator: {language: 'en-US', userAgent: android ? 'Mozilla/5.0 (Linux; Android 15) Chrome/140' : 'Mozilla/5.0 (X11; Linux x86_64) Chrome/140'}, token: 'test-token',
+    AbortController,
     setTimeout: callback => { restart = callback; return 1; }, clearTimeout: () => { restart = null; },
     fetch: async (_, options) => { payload = JSON.parse(options.body); return {ok: true, json: async () => ({ok: true})}; }
 });
