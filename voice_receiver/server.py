@@ -175,7 +175,7 @@ def page(token):
 </main><script>const token={config};</script><script src="/receiver.js"></script></body></html>'''.encode()
 
 class Handler(BaseHTTPRequestHandler):
-    server_version = "Voiceboard/1.0"
+    server_version = "Voiceboard/1.1"
     def log_message(self, *_):
         pass
     def send_json(self, status, value):
