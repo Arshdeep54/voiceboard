@@ -3,7 +3,37 @@ import threading
 import unittest
 from http.client import HTTPConnection
 from unittest.mock import patch
+from voice_receiver import server as receiver
 from voice_receiver.server import Handler, ThreadingHTTPServer
+
+class PairingUrlTests(unittest.TestCase):
+    def serve_config(self, proxy="http://100.111.242.101:8787", port="443", https=True):
+        return json.dumps({
+            "TCP": {port: {"HTTPS": https}},
+            "Web": {f"lappy.example.ts.net:{port}": {"Handlers": {"/": {"Proxy": proxy}}}},
+        })
+
+    @patch("voice_receiver.server.subprocess.check_output")
+    def test_matching_serve_route_uses_https(self, check_output):
+        check_output.return_value = self.serve_config()
+        self.assertEqual(receiver.pairing_url("100.111.242.101", 8787, "pair-token"), "https://lappy.example.ts.net/?token=pair-token")
+
+    @patch("voice_receiver.server.subprocess.check_output")
+    def test_custom_https_port_is_preserved(self, check_output):
+        check_output.return_value = self.serve_config(port="8443")
+        self.assertEqual(receiver.pairing_url("100.111.242.101", 8787, "pair-token"), "https://lappy.example.ts.net:8443/?token=pair-token")
+
+    @patch("voice_receiver.server.subprocess.check_output")
+    def test_unrelated_or_insecure_route_keeps_receiver_url(self, check_output):
+        for config in (self.serve_config(proxy="http://127.0.0.1:3000"), self.serve_config(https=False), "{}", "null"):
+            with self.subTest(config=config):
+                check_output.return_value = config
+                self.assertEqual(receiver.pairing_url("100.111.242.101", 8787, "pair-token"), "http://100.111.242.101:8787/?token=pair-token")
+
+    @patch("voice_receiver.server.subprocess.check_output")
+    def test_missing_tailscale_cli_keeps_receiver_url(self, check_output):
+        check_output.side_effect = FileNotFoundError()
+        self.assertEqual(receiver.pairing_url("127.0.0.1", 8787, "pair-token"), "http://127.0.0.1:8787/?token=pair-token")
 
 class ReceiverTests(unittest.TestCase):
     def setUp(self):
@@ -39,18 +69,13 @@ class ReceiverTests(unittest.TestCase):
         self.assertEqual(self.post({"token": "test-token", "text": "submit", "submit": True}), (200, {"ok": True}))
         inject.assert_called_once_with("submit", True, True)
 
-    def test_pwa_and_health_routes(self):
-        for path, content_type in (("/app.js", "application/javascript"), ("/sw.js", "application/javascript"), ("/icon.svg", "image/svg+xml")):
-            status, actual_type, body = self.get(path)
-            self.assertEqual(status, 200)
-            self.assertTrue(actual_type.startswith(content_type))
-            self.assertTrue(body)
-        status, _, manifest = self.get("/manifest.webmanifest?token=test-token")
-        self.assertEqual(status, 200)
-        self.assertIn(b"Voice Prompt", manifest)
+    def test_health_and_pairing_token(self):
         status, _, health = self.get("/api/health?token=test-token")
         self.assertEqual(status, 200)
         self.assertEqual(json.loads(health), {"ok": True})
+        self.assertEqual(self.get("/api/health?token=wrong")[0], 403)
+        self.assertEqual(self.get("/?token=wrong")[0], 403)
+        self.assertEqual(self.get("/fonts/../../config.py")[0], 404)
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,72 @@
+@font-face {
+    font-family: Outfit;
+    src: url('/fonts/outfit.woff2') format('woff2');
+    font-weight: 400 700;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'DM Sans';
+    src: url('/fonts/dm-sans.woff2') format('woff2');
+    font-weight: 400 700;
+    font-display: swap;
+}
+:root {
+    --paper: #f4f8f2;
+    --ink: #193b2d;
+    --muted: #647368;
+    --green: #386647;
+    --mint: #e3ecdc;
+    --lime: #d0ecae;
+    --line: #dce5d8;
+    --white: #ffffff;
+    --error: #9e392f;
+    --display: Outfit, 'Trebuchet MS', sans-serif;
+    --body: 'DM Sans', 'Trebuchet MS', sans-serif;
+    color-scheme: light;
+}
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    min-height: 100svh;
+    padding: max(24px, env(safe-area-inset-top)) max(22px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(22px, env(safe-area-inset-left));
+    background: var(--paper);
+    color: var(--ink);
+    font: 14px/1.6 var(--body);
+    -webkit-font-smoothing: antialiased;
+}
+main { width: min(100%, 440px); margin: 0 auto; }
+button, textarea, input { font: inherit; }
+button { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+button:disabled { cursor: wait; opacity: .65; }
+button[hidden] { display: none; }
+::selection { background: var(--lime); color: var(--ink); }
+:focus-visible { outline: 3px solid var(--green); outline-offset: 4px; }
+svg { width: 20px; height: 20px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+p, h1 { margin: 0; }
+.app-header { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between; padding: 0 0 22px; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: 6px; font: 500 25px/1 var(--display); letter-spacing: -1px; }
+.brand svg { width: 28px; height: 28px; }
+.connection { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--green); }
+.connection::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+.recorder { text-align: center; padding: 46px 0 30px; }
+.mic { width: 82px; height: 82px; border: 0; border-radius: 50%; background: var(--ink); color: var(--lime); display: grid; place-items: center; margin: 0 auto 18px; box-shadow: 0 0 0 8px var(--mint); transition: background .2s, box-shadow .2s; }
+.mic svg { width: 31px; height: 31px; stroke-width: 1.7; }
+.mic:hover { background: var(--green); box-shadow: 0 0 0 11px var(--mint); }
+.mic.listening { background: var(--green); animation: listening 1.5s ease-in-out infinite; }
+#hint { min-height: 23px; font-size: 14px; color: var(--muted); }
+textarea { display: block; width: 100%; min-height: 190px; resize: vertical; padding: 17px; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); background: var(--white); font: 16px/1.65 var(--body); box-shadow: 0 3px 12px #193b2d03; }
+textarea::placeholder { color: #7e897c; }
+.submit-option { display: flex; align-items: center; gap: 10px; min-height: 56px; color: var(--muted); font-size: 14px; cursor: pointer; }
+.submit-option input { accent-color: var(--green); width: 18px; height: 18px; margin: 0; }
+.submit-option svg { margin-left: auto; width: 16px; height: 16px; color: #8b9b83; }
+.send { display: flex; align-items: center; justify-content: center; gap: 28px; width: 100%; min-height: 54px; border: 0; border-radius: 9px; color: var(--white); background: var(--ink); font-size: 16px; font-weight: 600; transition: background .2s; }
+.send:hover { background: var(--green); }
+.send svg { width: 18px; height: 18px; }
+.status { min-height: 23px; margin-top: 15px; font-size: 14px; text-align: center; color: var(--muted); overflow-wrap: anywhere; }
+.ok { color: var(--green); }
+.error { color: var(--error); }
+.secondary-button { width: 100%; min-height: 44px; border: 1px solid var(--line); border-radius: 9px; background: var(--mint); color: var(--ink); font-size: 14px; font-weight: 500; margin-top: 14px; }
+@keyframes listening { 50% { box-shadow: 0 0 0 15px #d0ecae80; } }
+@media (min-width: 600px) { body { padding-top: 46px; } }
+@media (max-height: 740px) { .recorder { padding-block: 32px 24px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
