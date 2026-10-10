@@ -17,6 +17,27 @@
       content="Your Android phone. Your Linux desktop. One less thing between a thought and the screen."
     />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://voiceboard.hiesenbug.dev/" />
+    <meta
+      property="og:image"
+      content="https://voiceboard.hiesenbug.dev/assets/og-image.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Voiceboard turns your phone into a voice keyboard for Linux."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://voiceboard.hiesenbug.dev/assets/og-image.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Voiceboard turns your phone into a voice keyboard for Linux."
+    />
     <title>Voiceboard — Think out loud. Keep your flow.</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link
@@ -90,13 +111,13 @@
       >
       <nav aria-label="Main navigation">
         <a href="#how-it-works">How it works</a
-        ><a href="#built-for-you">Why Voiceboard</a
+        ><a href="#built-for-you">Use cases</a
         ><a href="https://github.com/Arshdeep54/voiceboard" class="source-link"
           >GitHub <svg class="icon"><use href="#i-up-right" /></svg
         ></a>
       </nav>
       <a class="button button-small button-dark" href="#get-started"
-        >Get Voiceboard <svg class="icon"><use href="#i-arrow" /></svg
+        >Get started <svg class="icon"><use href="#i-arrow" /></svg
       ></a>
     </header>
 
@@ -110,18 +131,15 @@
             Think out loud.<br /><span>Keep your flow.</span>
           </h1>
           <p class="hero-description">
-            Your phone is now your voice keyboard.<br class="desktop-break" />
-            Speak a thought. Send it straight to your Linux app.<br
-              class="desktop-break"
-            />
-            Stay in the moment.
+            Turn your phone into a voice keyboard for Linux. Dictate, edit, and
+            send in the app you’re using.
           </p>
           <div class="hero-actions">
             <a class="button button-dark" href="#get-started"
-              >Get started for free
+              >Get started
               <svg class="icon"><use href="#i-arrow" /></svg></a
             ><button class="demo-link" id="try-demo" type="button">
-              <span class="play-icon">▶</span> See it in action
+              <span class="play-icon">▶</span> Run the demo
             </button>
           </div>
           <div class="hero-footnote">
@@ -135,12 +153,12 @@
           class="device-scene"
           id="demo"
           role="group"
-          aria-label="Interactive phone-to-terminal demo"
+          aria-label="Browser-only phone-to-terminal preview"
         >
           <div class="scene-orbit orbit-one" aria-hidden="true"></div>
           <div class="scene-orbit orbit-two" aria-hidden="true"></div>
           <div class="floating-label">
-            <span class="status-dot"></span> A thought, in transit.
+            <span class="status-dot"></span> A thought, taking shape.
           </div>
           <svg
             class="connection-path"
@@ -174,12 +192,10 @@
               <div class="phone-brand">
                 <svg><use href="#i-wave" /></svg> voiceboard
               </div>
-              <div class="phone-connected">
-                <span class="status-dot"></span> Connected via Tailscale
+              <div class="phone-preview-label">
+                Demo mode
               </div>
-              <p class="phone-prompt">
-                A little less typing.<br />A little more you.
-              </p>
+              <p class="phone-prompt">Your voice keyboard.</p>
               <button
                 class="mic-button"
                 id="demo-mic"
@@ -189,7 +205,7 @@
                 <svg class="icon"><use href="#i-mic" /></svg>
               </button>
               <div class="phone-hint" id="phone-hint">
-                Tap for a sample thought
+                Tap for a sample phrase
               </div>
               <label class="sr-only" for="demo-text"
                 >Text to send to the demo terminal</label
@@ -200,13 +216,11 @@
                 maxlength="500"
                 spellcheck="false"
               >
-Let's build something that feels a little more human.</textarea>
+Let’s make this feel more human.</textarea>
               <button class="phone-send" id="demo-send" type="button">
-                Send to desktop <svg class="icon"><use href="#i-arrow" /></svg>
+                Preview send <svg class="icon"><use href="#i-arrow" /></svg>
               </button>
-              <span class="phone-bottom"
-                >Review it. Make it yours. Send it.</span
-              >
+              <span class="phone-bottom">Review. Edit. Preview.</span>
             </div>
             <div class="phone-home" aria-hidden="true"></div>
           </div>
@@ -214,7 +228,7 @@ Let's build something that feels a little more human.</textarea>
             <div class="terminal-bar">
               <span class="window-dots" aria-hidden="true"
                 ><i></i><i></i><i></i></span
-              ><span>your desktop</span
+              ><span>demo terminal</span
               ><svg class="icon"><use href="#i-terminal" /></svg>
             </div>
             <div class="terminal-body">
@@ -224,52 +238,36 @@ Let's build something that feels a little more human.</textarea>
               <div class="terminal-command">
                 <span class="terminal-chevron">❯</span> voiceboard
               </div>
-              <div class="terminal-muted">Your phone. Your keyboard.</div>
+              <div class="terminal-muted">Browser-only preview.</div>
               <div class="terminal-ready">
-                <span class="status-dot"></span> Ready when you are.
+                <span class="status-dot"></span> Preview ready.
               </div>
               <div class="terminal-divider"></div>
               <div class="terminal-input">
                 <span class="terminal-chevron">❯</span
                 ><span id="terminal-output" aria-live="polite"
-                  >Your next big idea goes here.</span
+                  >Your text appears here.</span
                 ><span class="cursor" aria-hidden="true"></span>
               </div>
             </div>
             <div class="terminal-bottom">
-              <span><span class="status-dot"></span> PRIVATE CONNECTION</span
+              <span>LOCAL PREVIEW</span
               ><span>LINUX</span>
             </div>
           </div>
           <div class="transfer-badge" id="transfer-badge">
             <svg class="icon"><use href="#i-lock" /></svg
-            ><span>Your devices. Your network.</span>
+            ><span>Nothing leaves this page.</span>
           </div>
           <div class="demo-caption">
-            INTERACTIVE PREVIEW <span>↗</span> Try sending a thought
+            BROWSER-ONLY PREVIEW
           </div>
           <p class="sr-only" id="demo-status" role="status">
             This preview stays in your browser. It does not connect to a desktop
-            or record audio.
+            or record audio. Nothing is sent over the network.
           </p>
         </div>
       </section>
-
-      <div class="principles wrap">
-        <div>
-          <svg class="icon"><use href="#i-phone" /></svg
-          ><span>A phone you already own</span>
-        </div>
-        <div>
-          <svg class="icon"><use href="#i-lock" /></svg
-          ><span>A connection you control</span>
-        </div>
-        <div>
-          <svg class="icon"><use href="#i-code" /></svg
-          ><span>Code you can read</span>
-        </div>
-        <span class="principles-note">Small tool. A new way to work.</span>
-      </div>
 
       <section
         class="workflow wrap section-space"
@@ -278,13 +276,9 @@ Let's build something that feels a little more human.</textarea>
       >
         <div class="section-heading">
           <div>
-            <p class="eyebrow">FROM YOUR MIND TO YOUR MACHINE</p>
-            <h2 id="workflow-title">Three steps.<br />Then, just speak.</h2>
+            <p class="eyebrow">HOW IT WORKS</p>
+            <h2 id="workflow-title">Three steps to start.</h2>
           </div>
-          <p>
-            No new workspace. No extra tab to keep open.<br />Just your phone
-            and the app you’re already in.
-          </p>
         </div>
         <div class="step-grid">
           <article class="step">
@@ -304,11 +298,10 @@ Let's build something that feels a little more human.</textarea>
             </div>
             <div class="step-title">
               <span class="step-number">01</span>
-              <h3>Start on your desktop.</h3>
+              <h3>Start Voiceboard.</h3>
             </div>
             <p>
-              Run <code>voiceboard</code> on Linux. A personal pairing link and
-              QR code appear in your terminal.
+              Run <code>voiceboard</code> to show your pairing link and QR code.
             </p>
           </article>
           <article class="step">
@@ -335,11 +328,10 @@ Let's build something that feels a little more human.</textarea>
             </div>
             <div class="step-title">
               <span class="step-number">02</span>
-              <h3>Pick up your phone.</h3>
+              <h3>Scan on Android.</h3>
             </div>
             <p>
-              Scan the QR in Android Chrome. Both devices connect through your
-              Tailscale network.
+              Connect both devices to Tailscale, then scan in Chrome.
             </p>
           </article>
           <article class="step">
@@ -356,11 +348,10 @@ Let's build something that feels a little more human.</textarea>
             </div>
             <div class="step-title">
               <span class="step-number">03</span>
-              <h3>Say it. Review it. Send it.</h3>
+              <h3>Review and send.</h3>
             </div>
             <p>
-              Dictate a phrase, edit the text, and send. Voiceboard pastes it
-              into your focused Linux app.
+              Voiceboard pastes your text into the focused Linux app.
             </p>
           </article>
         </div>
@@ -372,11 +363,9 @@ Let's build something that feels a little more human.</textarea>
         aria-labelledby="use-title"
       >
         <div class="use-intro">
-          <p class="eyebrow">YOUR THOUGHTS DON’T COME IN KEYSTROKES</p>
-          <h2 id="use-title">
-            For the moments<br />your mind moves<br />faster than your fingers.
-          </h2>
-          <p>Keep the tools you love.<br />Change how the words get there.</p>
+          <p class="eyebrow">THREE WAYS TO USE IT</p>
+          <h2 id="use-title">Say the whole thought.</h2>
+          <p>Prompts, drafts, or terminal tasks.</p>
           <div
             class="use-tabs"
             role="tablist"
@@ -390,8 +379,8 @@ Let's build something that feels a little more human.</textarea>
               data-case="code"
               tabindex="0"
             >
-              <svg class="icon"><use href="#i-code" /></svg> Talk to your coding
-              agent <svg class="icon"><use href="#i-arrow" /></svg></button
+              <svg class="icon"><use href="#i-code" /></svg> Coding agent
+              <svg class="icon"><use href="#i-arrow" /></svg></button
             ><button
               id="tab-write"
               role="tab"
@@ -400,7 +389,7 @@ Let's build something that feels a little more human.</textarea>
               data-case="write"
               tabindex="-1"
             >
-              <svg class="icon"><use href="#i-mic" /></svg> Get the words down
+              <svg class="icon"><use href="#i-mic" /></svg> Writing
               <svg class="icon"><use href="#i-arrow" /></svg></button
             ><button
               id="tab-terminal"
@@ -410,8 +399,8 @@ Let's build something that feels a little more human.</textarea>
               data-case="terminal"
               tabindex="-1"
             >
-              <svg class="icon"><use href="#i-terminal" /></svg> Stay in your
-              terminal <svg class="icon"><use href="#i-arrow" /></svg>
+              <svg class="icon"><use href="#i-terminal" /></svg> Terminal
+              <svg class="icon"><use href="#i-arrow" /></svg>
             </button>
           </div>
         </div>
@@ -430,9 +419,8 @@ Let's build something that feels a little more human.</textarea>
           <div class="example-quote">
             <span class="quote-mark" aria-hidden="true">“</span>
             <p id="example-text">
-              Before we write any code, walk me through how authentication works
-              in this project. Then let’s figure out where the session is
-              getting lost.
+              Walk me through authentication, then trace where the session is
+              lost.
             </p>
             <span class="example-caret" aria-hidden="true"></span>
           </div>
@@ -441,14 +429,11 @@ Let's build something that feels a little more human.</textarea>
               ><svg class="icon"><use href="#i-wave" /></svg
             ></span>
             <div>
-              <strong id="example-title">Better context. Less typing.</strong>
-              <p id="example-description">
-                Explain the whole idea, not just the part you feel like typing.
-              </p>
+              <strong id="example-title">A complete prompt, in one go.</strong>
             </div>
           </div>
           <div class="example-footer">
-            <span>A thought becomes a prompt.</span><span>01 / 03</span>
+            <span>01 / 03</span>
           </div>
         </div>
       </section>
@@ -459,12 +444,11 @@ Let's build something that feels a little more human.</textarea>
         aria-labelledby="privacy-title"
       >
         <div class="privacy-copy">
-          <p class="eyebrow">A SMALL TOOL WITH CLEAR BOUNDARIES</p>
-          <h2 id="privacy-title">Your words take<br />the short way home.</h2>
+          <p class="eyebrow">YOUR TEXT, BY DESIGN</p>
+          <h2 id="privacy-title">Private by default.</h2>
           <p>
-            No Voiceboard account. No prompt database.<br />No public receiver.
-            Just text, from your phone<br class="desktop-break" />
-            to your machine.
+            Text, not audio, travels over your tailnet. Prompts aren’t stored;
+            each session gets a fresh pairing token.
           </p>
           <a
             class="text-link"
@@ -502,19 +486,8 @@ Let's build something that feels a little more human.</textarea>
               <strong>Your Linux app</strong><span>Paste → keep going</span>
             </div>
           </div>
-          <div class="privacy-details">
-            <p>
-              <svg class="icon"><use href="#i-check" /></svg> Fresh pairing
-              token on every start
-            </p>
-            <p>
-              <svg class="icon"><use href="#i-check" /></svg> Prompts aren’t
-              logged or stored by the receiver
-            </p>
-          </div>
           <p class="privacy-caveat">
-            Dictation is handled by your phone’s browser or keyboard and may use
-            its provider’s speech services.
+            Speech recognition may use your phone’s browser or keyboard provider.
           </p>
         </div>
       </section>
@@ -527,13 +500,9 @@ Let's build something that feels a little more human.</textarea>
         <div class="wrap install-grid">
           <div class="install-copy">
             <p class="eyebrow">
-              <span class="status-dot"></span> OPEN SOURCE. READY WHEN YOU ARE.
+              <span class="status-dot"></span> INSTALL VOICEBOARD
             </p>
             <h2 id="install-title">Give your thoughts<br />a shortcut.</h2>
-            <p>
-              A tiny Python receiver.<br />A browser on your phone. That’s the
-              stack.
-            </p>
             <div class="requirements">
               <span>YOU’LL NEED</span>
               <p>
@@ -556,31 +525,7 @@ Let's build something that feels a little more human.</textarea>
           </div>
           <div class="install-code">
             <div class="install-toolbar">
-              <div
-                class="install-tabs"
-                role="tablist"
-                aria-label="Installation method"
-              >
-                <button
-                  id="install-quick"
-                  role="tab"
-                  aria-selected="true"
-                  aria-controls="install-panel"
-                  data-install="quick"
-                  tabindex="0"
-                >
-                  Quick install</button
-                ><button
-                  id="install-venv"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="install-panel"
-                  data-install="venv"
-                  tabindex="-1"
-                >
-                  Virtual environment
-                </button>
-              </div>
+              <span class="install-method">pipx</span>
               <button
                 class="copy-button"
                 id="copy-command"
@@ -589,27 +534,9 @@ Let's build something that feels a little more human.</textarea>
                 <svg class="icon"><use href="#i-copy" /></svg><span>Copy</span>
               </button>
             </div>
-            <div
-              id="install-panel"
-              role="tabpanel"
-              aria-labelledby="install-quick"
-              tabindex="0"
-            >
-              <pre><code id="install-command"><span class="code-comment"># Get the source</span>
-git clone https://github.com/Arshdeep54/voiceboard.git
-cd voiceboard
-
-<span class="code-comment"># Install and start the receiver</span>
-./install.sh
+            <div id="install-panel">
+              <pre><code id="install-command">pipx install voiceboard
 voiceboard</code></pre>
-            </div>
-            <div class="install-note">
-              <svg class="icon"><use href="#i-terminal" /></svg>
-              <p>
-                On Debian / Ubuntu, install the input tools first:<br /><code
-                  >sudo apt install python3-venv xdotool xclip</code
-                >
-              </p>
             </div>
             <p class="copy-status" id="copy-status" role="status"></p>
           </div>
@@ -618,7 +545,7 @@ voiceboard</code></pre>
 
       <section class="faq wrap section-space" aria-labelledby="faq-title">
         <div class="faq-heading">
-          <p class="eyebrow">A FEW GOOD QUESTIONS</p>
+          <p class="eyebrow">FAQ</p>
           <h2 id="faq-title">Before you<br />hit send.</h2>
           <a
             class="text-link"
@@ -635,12 +562,9 @@ voiceboard</code></pre>
               ></span>
             </summary>
             <p>
-              Voiceboard copies text to your Linux clipboard and presses
-              Ctrl+Shift+V in the focused application. It works with terminals
-              and apps that accept that shortcut. For other apps, run
-              <code>voiceboard --clipboard</code> and paste manually. Automatic
-              input is designed for X11; native Wayland applications may need
-              different input tooling.
+              It pastes with Ctrl+Shift+V on Linux/X11. For other apps, use
+              <code>voiceboard --clipboard</code>; native Wayland apps may need
+              different input tools.
             </p>
           </details>
           <details>
@@ -651,10 +575,8 @@ voiceboard</code></pre>
               ></span>
             </summary>
             <p>
-              No. Open the pairing URL in Chrome on Android. You can use browser
-              speech recognition, your keyboard’s dictation, or simply type. For
-              a full installable PWA, use Tailscale Serve HTTPS; the README
-              includes the setup.
+              No. Open the pairing link in Android Chrome. Use browser speech
+              over HTTPS, keyboard dictation, or type.
             </p>
           </details>
           <details>
@@ -665,39 +587,8 @@ voiceboard</code></pre>
               ></span>
             </summary>
             <p>
-              The Voiceboard receiver receives text, not audio, and doesn’t log
-              or store your prompts. Recognition happens through your phone
-              browser or keyboard; that provider may process speech using its
-              own services. Tailscale carries the text between your paired
-              devices.
-            </p>
-          </details>
-          <details>
-            <summary>
-              Why does it need Tailscale?<span
-                class="faq-plus"
-                aria-hidden="true"
-              ></span>
-            </summary>
-            <p>
-              Tailscale connects your phone and Linux machine on a private
-              network. Voiceboard listens only on the local Tailscale address by
-              default, with a fresh pairing token each time you start it. Keep
-              the receiver on your trusted tailnet; it’s not designed to be
-              exposed to the public internet.
-            </p>
-          </details>
-          <details>
-            <summary>
-              Is Voiceboard really free?<span
-                class="faq-plus"
-                aria-hidden="true"
-              ></span>
-            </summary>
-            <p>
-              Yes. Voiceboard is open source under the MIT license, with no
-              subscription or Voiceboard account. You run the receiver on your
-              own machine. Tailscale is a separate service with its own plans.
+              Voiceboard receives text, not audio, and doesn’t store prompts.
+              Your phone’s speech provider may process audio.
             </p>
           </details>
         </div>
@@ -707,18 +598,17 @@ voiceboard</code></pre>
         <svg class="closing-wave" aria-hidden="true">
           <use href="#i-wave" />
         </svg>
-        <h2>Less between you<br />and your next idea.</h2>
+        <h2>Ready to try Voiceboard?</h2>
         <a href="#get-started" class="button button-dark"
-          >Make room for your thoughts
+          >Get started
           <svg class="icon"><use href="#i-arrow" /></svg
         ></a>
-        <p>Made for people who think out loud.</p>
       </section>
     </main>
     <footer class="site-footer wrap">
       <a class="brand" href="#" aria-label="Voiceboard home"
         ><svg class="brand-mark"><use href="#i-wave" /></svg>voiceboard</a
-      ><span>A little tool. A lot of possibility.</span>
+      >
       <div>
         <a href="https://github.com/Arshdeep54/voiceboard"
           >GitHub <svg class="icon"><use href="#i-up-right" /></svg></a

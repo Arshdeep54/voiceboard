@@ -449,7 +449,7 @@ svg {
   width: 21px;
   height: 21px;
 }
-.phone-connected {
+.phone-preview-label {
   font-size: 7px;
   color: var(--muted);
   margin-top: 7px;
@@ -457,10 +457,6 @@ svg {
   gap: 4px;
   align-items: center;
   justify-content: center;
-}
-.phone-connected .status-dot {
-  width: 4px;
-  height: 4px;
 }
 .phone-prompt {
   font: 400 15px/1.35 var(--display);
@@ -680,11 +676,6 @@ svg {
   gap: 6px;
   align-items: center;
 }
-.terminal-bottom .status-dot {
-  width: 4px;
-  height: 4px;
-  background: #9fc47f;
-}
 .transfer-badge {
   position: absolute;
   bottom: 54px;
@@ -715,10 +706,6 @@ svg {
   gap: 10px;
   align-items: center;
 }
-.demo-caption > span {
-  font-size: 20px;
-  transform: rotate(-50deg);
-}
 .device-scene.is-sending .signal-dot {
   animation: signal 0.65s ease both;
 }
@@ -727,30 +714,6 @@ svg {
 }
 .device-scene.is-sending .phone-device {
   transform: rotate(-7deg) translateY(-3px);
-}
-.principles {
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding-block: 23px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-.principles > div {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  font-size: 11px;
-}
-.principles .icon {
-  width: 17px;
-  height: 17px;
-  color: var(--green);
-}
-.principles-note {
-  font-size: 10px;
-  color: var(--muted);
 }
 .section-heading {
   display: flex;
@@ -763,12 +726,6 @@ svg {
 .privacy .eyebrow,
 .faq .eyebrow {
   margin-bottom: 19px;
-}
-.section-heading > p {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.8;
-  padding-bottom: 4px;
 }
 .step-grid {
   display: grid;
@@ -1101,12 +1058,6 @@ svg {
   font-size: 11px;
   font-weight: 600;
 }
-.example-note p {
-  font-size: 9px;
-  line-height: 1.65;
-  color: var(--muted);
-  margin-top: 3px;
-}
 .example-footer {
   padding: 12px 23px;
   background: #e8efdf;
@@ -1207,25 +1158,6 @@ svg {
   transform: rotate(45deg);
   top: -3px;
 }
-.privacy-details {
-  margin-top: 29px;
-  border-top: 1px solid var(--line);
-  padding-top: 19px;
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-}
-.privacy-details p {
-  font-size: 10px;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-.privacy-details .icon {
-  width: 13px;
-  height: 13px;
-  color: var(--green);
-}
 .privacy-caveat {
   font-size: 9px;
   color: var(--muted);
@@ -1251,12 +1183,6 @@ svg {
 }
 .install-copy h2 {
   font-size: 52px;
-}
-.install-copy > p:not(.eyebrow) {
-  font-size: 13px;
-  color: var(--muted);
-  margin-top: 19px;
-  line-height: 1.8;
 }
 .requirements {
   margin-top: 27px;
@@ -1297,21 +1223,13 @@ svg {
   padding: 0 21px;
   gap: 10px;
 }
-.install-tabs {
-  display: flex;
-  gap: 21px;
-}
-.install-tabs button {
+.install-method {
   font-size: 10px;
-  background: none;
-  color: #a4b49d;
-  border: 0;
-  border-bottom: 2px solid transparent;
-  padding: 18px 0;
-}
-.install-tabs button[aria-selected="true"] {
   color: var(--lime);
-  border-bottom-color: var(--lime);
+  padding: 18px 0;
+  border-bottom: 2px solid var(--lime);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 .copy-button {
   display: flex;
@@ -1340,31 +1258,6 @@ svg {
   font-size: 10px;
   line-height: 2.2;
   scrollbar-width: thin;
-}
-.code-comment {
-  color: #8a9e7f;
-}
-.install-note {
-  display: flex;
-  gap: 9px;
-  padding: 18px 24px;
-  background: #ffffff04;
-  border-top: 1px solid #ffffff0b;
-  color: #aebda5;
-  border-radius: 0 0 12px 12px;
-}
-.install-note > .icon {
-  width: 14px;
-  height: 14px;
-  margin-top: 3px;
-}
-.install-note p {
-  font-size: 9px;
-  line-height: 1.8;
-}
-.install-note code {
-  font-size: 9px;
-  color: #d1dfc5;
 }
 .install-code :focus-visible {
   outline-color: var(--lime);
@@ -1461,11 +1354,6 @@ details[open] .faq-plus::after {
   margin-top: 27px;
   gap: 24px;
 }
-.closing > p {
-  font-size: 10px;
-  color: var(--muted);
-  margin-top: 17px;
-}
 .site-footer {
   padding: 29px 0 35px;
   display: flex;
@@ -1479,10 +1367,6 @@ details[open] .faq-plus::after {
 .site-footer .brand-mark {
   width: 24px;
   height: 24px;
-}
-.site-footer > span {
-  font-size: 9px;
-  color: var(--muted);
 }
 .site-footer > div {
   margin-left: auto;
@@ -1597,9 +1481,6 @@ details[open] .faq-plus::after {
   }
   .demo-caption {
     right: 10px;
-  }
-  .principles-note {
-    display: none;
   }
   .step-grid {
     gap: 22px;
@@ -1742,10 +1623,6 @@ details[open] .faq-plus::after {
     right: 67px;
     bottom: 3px;
   }
-  .principles {
-    justify-content: center;
-    gap: 45px;
-  }
   .section-space {
     padding-block: 75px;
   }
@@ -1754,9 +1631,6 @@ details[open] .faq-plus::after {
   }
   .section-heading h2 {
     font-size: 43px;
-  }
-  .section-heading > p {
-    font-size: 11px;
   }
   .step-grid {
     gap: 18px;
@@ -1836,9 +1710,6 @@ details[open] .faq-plus::after {
     margin-inline: 17px;
     gap: 8px;
   }
-  .example-note p {
-    font-size: 8px;
-  }
   .example-note strong {
     font-size: 10px;
   }
@@ -1875,9 +1746,6 @@ details[open] .faq-plus::after {
     font-size: 5px;
     letter-spacing: 0;
   }
-  .privacy-details p {
-    font-size: 9px;
-  }
   .privacy-caveat {
     font-size: 8px;
   }
@@ -1896,20 +1764,11 @@ details[open] .faq-plus::after {
     font-size: 6px;
     letter-spacing: 1px;
   }
-  .install-copy > p:not(.eyebrow) {
-    font-size: 11px;
-  }
   .requirements > p {
     font-size: 10px;
   }
   .install-toolbar {
     padding-inline: 15px;
-  }
-  .install-tabs {
-    gap: 12px;
-  }
-  .install-tabs button {
-    font-size: 8px;
   }
   .copy-button {
     font-size: 8px;
@@ -1918,13 +1777,6 @@ details[open] .faq-plus::after {
   .install-code pre {
     font-size: 8px;
     padding-inline: 15px;
-  }
-  .install-note {
-    padding-inline: 15px;
-  }
-  .install-note p,
-  .install-note code {
-    font-size: 8px;
   }
   .faq {
     grid-template-columns: 0.7fr 1.3fr;
@@ -1935,9 +1787,6 @@ details[open] .faq-plus::after {
   }
   .faq-list summary {
     font-size: 12px;
-  }
-  .site-footer > span {
-    display: none;
   }
   .closing h2 {
     font-size: 48px;
@@ -2129,9 +1978,6 @@ details[open] .faq-plus::after {
     bottom: -3px;
     letter-spacing: 0.7px;
   }
-  .demo-caption > span {
-    font-size: 15px;
-  }
   .device-scene.is-sending .phone-device {
     transform: rotate(-7deg) scale(0.74) translateY(-3px);
   }
@@ -2141,21 +1987,6 @@ details[open] .faq-plus::after {
   .mic-button {
     width: 60px;
     height: 60px;
-  }
-  .principles {
-    gap: 0;
-    justify-content: space-between;
-    padding-block: 19px;
-  }
-  .principles > div {
-    flex-direction: column;
-    font-size: 7px;
-    gap: 7px;
-    text-align: center;
-  }
-  .principles .icon {
-    width: 16px;
-    height: 16px;
   }
   .section-space {
     padding-block: 59px;
@@ -2172,10 +2003,6 @@ details[open] .faq-plus::after {
   .section-heading h2 {
     font-size: 39px;
     letter-spacing: -1.5px;
-  }
-  .section-heading > p {
-    margin-top: 19px;
-    font-size: 11px;
   }
   .step-grid {
     grid-template-columns: 1fr;
@@ -2345,9 +2172,6 @@ details[open] .faq-plus::after {
   .example-note strong {
     font-size: 10px;
   }
-  .example-note p {
-    font-size: 8px;
-  }
   .example-footer {
     padding-inline: 19px;
     font-size: 7px;
@@ -2392,13 +2216,6 @@ details[open] .faq-plus::after {
   .network-line > span {
     font-size: 5px;
   }
-  .privacy-details {
-    margin-top: 22px;
-    gap: 8px;
-  }
-  .privacy-details p {
-    font-size: 10px;
-  }
   .privacy-caveat {
     font-size: 9px;
   }
@@ -2418,10 +2235,6 @@ details[open] .faq-plus::after {
     font-size: 42px;
     letter-spacing: -1.6px;
   }
-  .install-copy > p:not(.eyebrow) {
-    font-size: 12px;
-    margin-top: 18px;
-  }
   .requirements {
     margin-top: 21px;
   }
@@ -2435,23 +2248,10 @@ details[open] .faq-plus::after {
   .install-toolbar {
     padding-inline: 15px;
   }
-  .install-tabs {
-    gap: 17px;
-  }
-  .install-tabs button {
-    font-size: 9px;
-  }
   .install-code pre {
     font-size: 8px;
     padding: 22px 15px;
     line-height: 2.3;
-  }
-  .install-note {
-    padding: 15px;
-  }
-  .install-note p,
-  .install-note code {
-    font-size: 8px;
   }
   .copy-status {
     font-size: 9px;
@@ -2501,10 +2301,6 @@ details[open] .faq-plus::after {
     padding-inline: 18px;
     gap: 18px;
     margin-top: 24px;
-  }
-  .closing > p {
-    font-size: 9px;
-    margin-top: 15px;
   }
   .site-footer {
     padding: 25px 0 28px;
@@ -2579,9 +2375,6 @@ details[open] .faq-plus::after {
   }
   .use-intro h2 {
     font-size: 31px;
-  }
-  .install-tabs {
-    gap: 10px;
   }
   .install-code pre {
     font-size: 7px;

@@ -47,7 +47,14 @@ forwarding or Tailscale Funnel.
 
 ## Install
 
-The quick local install links the CLI into `~/.local/bin`:
+Install from PyPI with `pipx`:
+
+```sh
+pipx install voiceboard
+voiceboard
+```
+
+For a local checkout, the quick install links the CLI into `~/.local/bin`:
 
 ```sh
 ./install.sh

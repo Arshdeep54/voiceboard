@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Voiceboard: Think out loud. Keep your flow.</title>
+  <desc id="description">A phone voice keyboard sends text to a Linux desktop with Voiceboard.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4f8f2"/>
+      <stop offset="1" stop-color="#e8f0e2"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#193b2d" flood-opacity=".14"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#paper)"/>
+  <circle cx="1008" cy="313" r="264" fill="#dce9d2" opacity=".72"/>
+  <circle cx="1008" cy="313" r="220" fill="none" stroke="#c9dcc0" stroke-width="1"/>
+  <circle cx="1008" cy="313" r="184" fill="none" stroke="#c9dcc0" stroke-width="1" stroke-dasharray="3 9"/>
+
+  <g transform="translate(76 51) scale(.90625)">
+    <rect width="64" height="64" rx="16" fill="#193b2d"/>
+    <path d="M14 26v12m9-21v30m9-38v46m9-38v30m9-21v12" fill="none" stroke="#d0ecae" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <text x="148" y="91" fill="#193b2d" font-family="Outfit, 'DM Sans', sans-serif" font-size="31" font-weight="600" letter-spacing="-1.1">voiceboard</text>
+  <text x="78" y="173" fill="#386647" font-family="'DM Sans', sans-serif" font-size="12" font-weight="700" letter-spacing="2.2">PRIVATE VOICE INPUT FOR LINUX</text>
+
+  <text x="76" y="265" fill="#193b2d" font-family="Outfit, 'DM Sans', sans-serif" font-size="68" font-weight="600" letter-spacing="-3.5">Think out loud.</text>
+  <text x="76" y="342" fill="#386647" font-family="Outfit, 'DM Sans', sans-serif" font-size="68" font-weight="600" letter-spacing="-3.5">Keep your flow.</text>
+  <text x="80" y="391" fill="#647368" font-family="'DM Sans', sans-serif" font-size="20">Your phone is a voice keyboard for Linux.</text>
+
+  <rect x="78" y="423" width="222" height="39" rx="19.5" fill="#ffffff" stroke="#dce5d8"/>
+  <text x="101" y="448" fill="#193b2d" font-family="'DM Sans', sans-serif" font-size="11" font-weight="700" letter-spacing="1.1">ANDROID + LINUX</text>
+  <circle cx="325" cy="442" r="3" fill="#386647"/>
+  <text x="340" y="447" fill="#647368" font-family="'DM Sans', sans-serif" font-size="12">Free and open source</text>
+
+  <rect x="78" y="502" width="504" height="76" rx="10" fill="#202c25"/>
+  <text x="100" y="529" fill="#8a9e7f" font-family="'DM Sans', sans-serif" font-size="9" font-weight="700" letter-spacing="1.3">GET STARTED</text>
+  <text x="100" y="557" fill="#edf3e8" font-family="'DejaVu Sans Mono', monospace" font-size="16">pipx install voiceboard</text>
+
+  <path d="M824 251 C772 251 768 366 833 366" fill="none" stroke="#386647" stroke-width="2" stroke-dasharray="4 8" opacity=".7"/>
+  <circle cx="824" cy="251" r="5" fill="#386647"/>
+
+  <g filter="url(#shadow)">
+    <rect x="800" y="117" width="350" height="318" rx="18" fill="#202c25"/>
+    <path d="M800 135a18 18 0 0 1 18-18h314a18 18 0 0 1 18 18v40H800z" fill="#26352c"/>
+    <circle cx="824" cy="146" r="5" fill="#d98b70"/>
+    <circle cx="842" cy="146" r="5" fill="#d6b978"/>
+    <circle cx="860" cy="146" r="5" fill="#9fc47f"/>
+    <text x="895" y="150" fill="#b5c3ac" font-family="'DM Sans', sans-serif" font-size="11">demo terminal</text>
+    <text x="878" y="211" fill="#aebda5" font-family="'DejaVu Sans Mono', monospace" font-size="13">~/project <tspan fill="#91a486">on</tspan> <tspan fill="#c7dda7">main</tspan></text>
+    <text x="878" y="248" fill="#c7dda7" font-family="'DejaVu Sans Mono', monospace" font-size="14">$ voiceboard</text>
+    <circle cx="884" cy="284" r="4" fill="#9fc47f"/>
+    <text x="898" y="288" fill="#b5c3ac" font-family="'DM Sans', sans-serif" font-size="12">Browser-only preview</text>
+    <path d="M830 312h290" stroke="#ffffff" stroke-opacity=".12"/>
+    <text x="878" y="346" fill="#aebda5" font-family="'DejaVu Sans Mono', monospace" font-size="11">&gt; Trace the auth flow, then</text>
+    <text x="896" y="367" fill="#edf3e8" font-family="'DejaVu Sans Mono', monospace" font-size="11">show me where the session drops.</text>
+    <rect x="878" y="393" width="7" height="14" rx="1" fill="#c7dda7"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="670" y="228" width="190" height="337" rx="29" fill="#fbfcfa" stroke="#dce5d8" stroke-width="2"/>
+    <rect x="735" y="237" width="60" height="7" rx="3.5" fill="#dce5d8"/>
+    <g transform="translate(722 260) scale(.390625)">
+      <rect width="64" height="64" rx="16" fill="#193b2d"/>
+      <path d="M14 26v12m9-21v30m9-38v46m9-38v30m9-21v12" fill="none" stroke="#d0ecae" stroke-width="5" stroke-linecap="round"/>
+    </g>
+    <text x="753" y="279" fill="#193b2d" font-family="Outfit, sans-serif" font-size="15" font-weight="600">voiceboard</text>
+    <text x="765" y="301" fill="#647368" font-family="'DM Sans', sans-serif" font-size="8">DEMO MODE</text>
+    <text x="696" y="337" fill="#193b2d" font-family="Outfit, sans-serif" font-size="15" font-weight="500">Your voice keyboard.</text>
+    <circle cx="765" cy="378" r="24" fill="#193b2d"/>
+    <path d="M762 371v13a4 4 0 0 0 8 0v-13a4 4 0 0 0-8 0zm-6 7v4a10 10 0 0 0 20 0v-4m-10 14v6m-5 0h10" fill="none" stroke="#d0ecae" stroke-width="2" stroke-linecap="round"/>
+    <text x="722" y="422" fill="#647368" font-family="'DM Sans', sans-serif" font-size="9">Tap for a sample phrase</text>
+    <rect x="690" y="439" width="150" height="57" rx="7" fill="#f4f8f2" stroke="#dce5d8"/>
+    <text x="701" y="461" fill="#193b2d" font-family="'DM Sans', sans-serif" font-size="10">Let's make this</text>
+    <text x="701" y="478" fill="#193b2d" font-family="'DM Sans', sans-serif" font-size="10">feel more human.</text>
+    <rect x="690" y="508" width="150" height="35" rx="7" fill="#193b2d"/>
+    <text x="730" y="530" fill="#ffffff" font-family="'DM Sans', sans-serif" font-size="10" font-weight="600">Preview send</text>
+    <rect x="736" y="554" width="58" height="4" rx="2" fill="#dce5d8"/>
+  </g>
+
+  <rect x="913" y="463" width="213" height="44" rx="8" fill="#ecf3e6" stroke="#d3e1c7" transform="rotate(-3 913 463)"/>
+  <circle cx="936" cy="485" r="5" fill="#386647"/>
+  <text x="950" y="489" fill="#193b2d" font-family="'DM Sans', sans-serif" font-size="11" font-weight="600">Nothing leaves this page.</text>
+</svg>

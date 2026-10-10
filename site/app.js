@@ -1,36 +1,24 @@
 const examples = {
   code: {
     app: "YOUR CODING AGENT",
-    text: "Before we write any code, walk me through how authentication works in this project. Then let’s figure out where the session is getting lost.",
-    title: "Better context. Less typing.",
-    description:
-      "Explain the whole idea, not just the part you feel like typing.",
-    footer: "A thought becomes a prompt.",
+    text: "Walk me through authentication, then trace where the session is lost.",
+    title: "A complete prompt, in one go.",
     number: "01 / 03",
-    sample:
-      "Before we write any code, walk me through how authentication works in this project.",
+    sample: "Walk me through authentication, then trace where the session is lost.",
   },
   write: {
     app: "YOUR WRITING SPACE",
-    text: "The idea came to me on a walk: what if we made the first five minutes feel effortless? Not more features. Just a better place to begin.",
-    title: "Catch the thought while it’s here.",
-    description:
-      "Get the rough draft down. There’s always time to make it beautiful.",
-    footer: "A passing thought becomes a first draft.",
+    text: "What would make the first five minutes feel effortless?",
+    title: "Capture a first draft.",
     number: "02 / 03",
-    sample:
-      "What if we made the first five minutes feel effortless? Just a better place to begin.",
+    sample: "What would make the first five minutes feel effortless?",
   },
   terminal: {
     app: "YOUR LINUX TERMINAL",
-    text: "Here’s what I’ve tried so far. The database connection is fine, but the worker stops after the first batch. Can you help me trace what happens next?",
-    title: "Keep your cursor where it belongs.",
-    description:
-      "Dictate context to your terminal agent without switching windows.",
-    footer: "Your terminal. With room for the whole story.",
+    text: "The worker stops after its first batch. Help me trace why.",
+    title: "Keep context in the terminal.",
     number: "03 / 03",
-    sample:
-      "The database connection is fine, but the worker stops after the first batch.",
+    sample: "The worker stops after its first batch. Help me trace why.",
   },
 };
 
@@ -54,16 +42,16 @@ async function sendDemo() {
   }
   send.disabled = true;
   scene.classList.add("is-sending");
-  hint.textContent = "Sending your thought…";
-  status.textContent = "Sending in the browser preview.";
+  hint.textContent = "Updating preview…";
+  status.textContent = "Updating the browser preview.";
   if (!reducedMotion.matches)
     await new Promise((resolve) => setTimeout(resolve, 550));
   output.textContent = value;
-  hint.textContent = "Sent. Your flow, uninterrupted.";
+  hint.textContent = "Preview updated.";
   document.querySelector("#transfer-badge span").textContent =
-    "Thought delivered.";
+    "Nothing leaves this page.";
   status.textContent =
-    "Your text arrived in the demo terminal. This preview stays in your browser.";
+    "Your text appears in this browser preview only. Nothing was sent.";
   scene.classList.remove("is-sending");
   send.disabled = false;
 }
@@ -72,7 +60,7 @@ send.addEventListener("click", sendDemo);
 document.querySelector("#demo-mic").addEventListener("click", () => {
   const samples = Object.values(examples).map((example) => example.sample);
   text.value = samples[sampleIndex++ % samples.length];
-  hint.textContent = "Sample loaded. Edit it, or send it.";
+  hint.textContent = "Sample loaded. Edit it or preview it.";
   status.textContent =
     "An example spoken phrase was loaded. No audio is recorded.";
 });
@@ -84,9 +72,9 @@ document.querySelector("#try-demo").addEventListener("click", () => {
   sendDemo();
 });
 text.addEventListener("input", () => {
-  hint.textContent = "Your words. Ready to send.";
+  hint.textContent = "Your text. Ready to preview.";
   document.querySelector("#transfer-badge span").textContent =
-    "Your devices. Your network.";
+    "Nothing leaves this page.";
 });
 
 function wireTabs(selector, activate) {
@@ -121,47 +109,17 @@ wireTabs("[data-case]", (tab) => {
   document.querySelector("#example-app").textContent = example.app;
   document.querySelector("#example-text").textContent = example.text;
   document.querySelector("#example-title").textContent = example.title;
-  document.querySelector("#example-description").textContent =
-    example.description;
-  document.querySelector(".example-footer span:first-child").textContent =
-    example.footer;
-  document.querySelector(".example-footer span:last-child").textContent =
+  document.querySelector(".example-footer span").textContent =
     example.number;
   document.querySelector("#use-panel").setAttribute("aria-labelledby", tab.id);
 });
 
-const commands = {
-  quick:
-    "# Get the source\ngit clone https://github.com/Arshdeep54/voiceboard.git\ncd voiceboard\n\n# Install and start the receiver\n./install.sh\nvoiceboard",
-  venv: "# Get the source\ngit clone https://github.com/Arshdeep54/voiceboard.git\ncd voiceboard\n\n# Install in a virtual environment\npython3 -m venv .venv\n.venv/bin/python -m pip install .\n.venv/bin/voiceboard",
-};
-let installation = "quick";
-wireTabs("[data-install]", (tab) => {
-  installation = tab.dataset.install;
-  const code = document.querySelector("#install-command");
-  code.replaceChildren();
-  commands[installation].split("\n").forEach((line, index) => {
-    if (index) code.append("\n");
-    if (line.startsWith("#")) {
-      const comment = document.createElement("span");
-      comment.className = "code-comment";
-      comment.textContent = line;
-      code.append(comment);
-    } else {
-      code.append(line);
-    }
-  });
-  document
-    .querySelector("#install-panel")
-    .setAttribute("aria-labelledby", tab.id);
-  document.querySelector("#copy-status").textContent = "";
-  document.querySelector("#copy-command span").textContent = "Copy";
-});
+const installCommand = "pipx install voiceboard\nvoiceboard";
 
 document.querySelector("#copy-command").addEventListener("click", async () => {
   const feedback = document.querySelector("#copy-status");
   try {
-    await navigator.clipboard.writeText(commands[installation]);
+    await navigator.clipboard.writeText(installCommand);
     document.querySelector("#copy-command span").textContent = "Copied";
     feedback.textContent = "Commands copied. Run them in your Linux terminal.";
   } catch {
